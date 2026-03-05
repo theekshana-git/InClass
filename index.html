@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection</title>
+</head>
+<body>
+  <select id="select">
+
+  </select>
+
+  <img id="display-img" src="" alt="Char Image" style="max-width: 300px;">
+
+  <script>
+    const characters = ['select','garfield', 'odie', 'nermal', 'pooky', 'jon'];
+    const selectBox = document.getElementById('select');
+    const image = document.getElementById('display-img');
+
+    characters.forEach(char =>{
+      const option = document.createElement('option');
+      option.value = char;
+      option.textContent =  char.charAt(0).toUpperCase() + char.slice(1);
+      selectBox.appendChild(option);
+    });
+
+    selectBox.addEventListener('change', (e)=>{
+      const selected = e.target.value;
+      if(selected){
+        image.src = `images/${selected}.jpg`;
+        image.style.display = 'block';
+      }else{
+        image.style.display = 'none';
+      }
+    })
+
+    
+  </script>
+  
+</body>
+</html>
